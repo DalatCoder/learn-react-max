@@ -66,10 +66,22 @@ const App = () => {
     });
   };
 
+  const style = {
+    backgroundColor: '#fff',
+    font: 'inherit',
+    border: '1px solid #333',
+    padding: '8px',
+    borderRadius: '3px',
+    cursor: 'pointer'
+  };
+
   return (
     <div className="App">
       <h1>Hello world</h1>
-      <button onClick={switchNameHandler.bind(null, 'Maximilian')}>
+      <button
+        style={style}
+        onClick={switchNameHandler.bind(null, 'Maximilian')}
+      >
         Switch Name
       </button>
       <Person
