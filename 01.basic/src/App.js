@@ -56,10 +56,10 @@ const App = () => {
     ]
   });
 
-  const switchNameHandler = () => {
+  const switchNameHandler = newName => {
     setState({
       persons: [
-        { name: 'Maximilian', age: 28 },
+        { name: newName, age: 28 },
         { name: 'Manu', age: 29 },
         { name: 'Stephenie', age: 76 }
       ]
@@ -69,7 +69,9 @@ const App = () => {
   return (
     <div className="App">
       <h1>Hello world</h1>
-      <button onClick={() => switchNameHandler()}>Switch Name</button>
+      <button onClick={switchNameHandler.bind(null, 'Maximilian')}>
+        Switch Name
+      </button>
       <Person
         onParagraphClick={switchNameHandler}
         name={state.persons[0].name}
