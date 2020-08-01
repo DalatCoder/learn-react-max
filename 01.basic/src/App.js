@@ -1,11 +1,13 @@
 import React from 'react';
 import './App.css';
+import Person from './Person/Person';
 
 function App() {
-  return React.createElement(
-    'div',
-    { className: 'App' },
-    React.createElement('h1', null, 'Hello world')
+  return (
+    <div className="App">
+      <h1>Hello world</h1>
+      <Person />
+    </div>
   );
 }
 
