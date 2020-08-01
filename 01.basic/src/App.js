@@ -70,11 +70,23 @@ const App = () => {
     <div className="App">
       <h1>Hello world</h1>
       <button onClick={() => switchNameHandler()}>Switch Name</button>
-      <Person name={state.persons[0].name} age={state.persons[0].age} />
-      <Person name={state.persons[1].name} age={state.persons[1].age}>
+      <Person
+        onParagraphClick={switchNameHandler}
+        name={state.persons[0].name}
+        age={state.persons[0].age}
+      />
+      <Person
+        onParagraphClick={switchNameHandler}
+        name={state.persons[1].name}
+        age={state.persons[1].age}
+      >
         My hobbies: racing
       </Person>
-      <Person name={state.persons[2].name} age={state.persons[2].age} />
+      <Person
+        onParagraphClick={switchNameHandler}
+        name={state.persons[2].name}
+        age={state.persons[2].age}
+      />
     </div>
   );
 };
