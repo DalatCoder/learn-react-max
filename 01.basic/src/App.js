@@ -74,27 +74,9 @@ const App = () => {
       return null;
     }
 
-    return (
-      <div>
-        <Person
-          onParagraphClick={switchNameHandler}
-          name={persons[0].name}
-          age={persons[0].age}
-        />
-        <Person
-          onParagraphClick={switchNameHandler}
-          name={persons[1].name}
-          age={persons[1].age}
-        >
-          My hobbies: racing
-        </Person>
-        <Person
-          onParagraphClick={switchNameHandler}
-          name={persons[2].name}
-          age={persons[2].age}
-        />
-      </div>
-    );
+    return persons.map(({ name, age }) => {
+      return <Person key={name} name={name} age={age} />;
+    });
   };
 
   const renderButton = () => {
