@@ -48,22 +48,61 @@ import Person from './Person/Person';
   */
 
 const App = () => {
-  const [state, setState] = useState({
-    persons: [
-      { name: 'Max', age: 28 },
-      { name: 'Manu', age: 29 },
-      { name: 'Stephenie', age: 26 }
-    ]
-  });
+  const [persons, setPersons] = useState([
+    { name: 'Max', age: 28 },
+    { name: 'Manu', age: 29 },
+    { name: 'Stephenie', age: 26 }
+  ]);
+
+  const [showPersons, setShowPersons] = useState(false);
 
   const switchNameHandler = newName => {
-    setState({
-      persons: [
-        { name: newName, age: 28 },
-        { name: 'Manu', age: 29 },
-        { name: 'Stephenie', age: 76 }
-      ]
-    });
+    setPersons([
+      { name: newName, age: 28 },
+      { name: 'Manu', age: 29 },
+      { name: 'Stephenie', age: 76 }
+    ]);
+  };
+
+  const togglePersonHandler = () => {
+    const doesShow = showPersons;
+    return setShowPersons(!doesShow);
+  };
+
+  const renderPersons = () => {
+    if (!showPersons) {
+      return null;
+    }
+
+    return (
+      <div>
+        <Person
+          onParagraphClick={switchNameHandler}
+          name={persons[0].name}
+          age={persons[0].age}
+        />
+        <Person
+          onParagraphClick={switchNameHandler}
+          name={persons[1].name}
+          age={persons[1].age}
+        >
+          My hobbies: racing
+        </Person>
+        <Person
+          onParagraphClick={switchNameHandler}
+          name={persons[2].name}
+          age={persons[2].age}
+        />
+      </div>
+    );
+  };
+
+  const renderButton = () => {
+    return (
+      <button style={style} onClick={togglePersonHandler}>
+        {showPersons ? 'Hide persons' : 'Show persons'}
+      </button>
+    );
   };
 
   const style = {
@@ -78,29 +117,8 @@ const App = () => {
   return (
     <div className="App">
       <h1>Hello world</h1>
-      <button
-        style={style}
-        onClick={switchNameHandler.bind(null, 'Maximilian')}
-      >
-        Switch Name
-      </button>
-      <Person
-        onParagraphClick={switchNameHandler}
-        name={state.persons[0].name}
-        age={state.persons[0].age}
-      />
-      <Person
-        onParagraphClick={switchNameHandler}
-        name={state.persons[1].name}
-        age={state.persons[1].age}
-      >
-        My hobbies: racing
-      </Person>
-      <Person
-        onParagraphClick={switchNameHandler}
-        name={state.persons[2].name}
-        age={state.persons[2].age}
-      />
+      {renderButton()}
+      {renderPersons()}
     </div>
   );
 };
